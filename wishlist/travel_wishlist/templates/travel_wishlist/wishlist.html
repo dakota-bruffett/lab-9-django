@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishlist</title>
+</head>
+
+<h2>
+    Travel wishlist
+</h2>
+{% for place in places %}
+
+<div>
+    {{place.name}}
+</div>
+    {% empty %}
+<p>
+    { you have no places in this wishlist }
+</p>
+    {% endfor %}
+<body>
+
+</body>
+</html>
