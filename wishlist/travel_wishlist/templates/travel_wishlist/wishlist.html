@@ -16,7 +16,13 @@
 {% for place in places %}
 
 <div>
+
     {{place.name}}
+    <form method="post">
+        {% csrf_token %}
+        <button>Visited</button>
+    </form>
+
 </div>
     {% empty %}
 <p>

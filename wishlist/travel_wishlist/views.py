@@ -18,10 +18,16 @@ def place_list(request):
     new_place_form= NewPlaceForm()
     return render(request, 'travel_wishlist/wishlist.html', {'places': places, 'new_place_form': new_place_form})
 
-
 def places_visited(request):
     visited = Place.objects.filter(visited = True)
     return render(request, 'travel_wishlist/visited.hmtl', {'visited':visited})
+def place_was_visited(request, place_pk ):
+    if request.method ==  "POST":
+        place = Place.objects.get(pk == place_pk)
+        places_visited= True
+        place.save()
+
+    return redirect('place_list')
 
 def about(request):
     author = 'Dakota'
