@@ -4,6 +4,9 @@ from django.urls import reverse
 from .models import Place
 
 # Create your tests here.
+
+#here is the first of two unit tests
+
 class TestHomePage(TestCase):
     def test_load_page_shows_empty_list(self):
         home_url_page = reverse('place_list')
