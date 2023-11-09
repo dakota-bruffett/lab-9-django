@@ -15,9 +15,14 @@
 </form>
 {% for place in places %}
 
-<div>
 
-    {{place.name}}
+<div>
+    <span id="place-name-{{place.pk}}" class="place-name">
+        <a href="{% url 'place_details' place_pk=place_pk %">
+             {{place.name}}
+        </a>
+
+    </span>
     <form method="post">
         {% csrf_token %}
         <button>Visited</button>

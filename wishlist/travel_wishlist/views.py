@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from.models import Place
 from .forms import NewPlaceForm
 # Create your views here.
-def place_list(request):
 
+@login_required
+def place_list(request):
     if request.method == 'POST':
         #This makes a form for the view
         form = NewPlaceForm(request.POST)
@@ -17,10 +19,13 @@ def place_list(request):
     places = Place.objects.filter(visited=False)
     new_place_form= NewPlaceForm()
     return render(request, 'travel_wishlist/wishlist.html', {'places': places, 'new_place_form': new_place_form})
+@login_required
 
 def places_visited(request):
     visited = Place.objects.filter(visited = True)
     return render(request, 'travel_wishlist/visited.hmtl', {'visited':visited})
+@login_required
+
 def place_was_visited(request, place_pk ):
     if request.method ==  "POST":
         place = Place.objects.get(pk == place_pk)
@@ -28,6 +33,7 @@ def place_was_visited(request, place_pk ):
         place.save()
 
     return redirect('place_list')
+@login_required
 
 def about(request):
     author = 'Dakota'
