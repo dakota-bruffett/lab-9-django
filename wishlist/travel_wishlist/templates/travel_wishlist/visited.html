@@ -17,5 +17,8 @@
 <p>places you have to visit still</p>
 
 {% elief %}
-
+<form action="{% url 'delete_place' place.pk %}" method="post">
+    {%csrf_token%}
+    <button type="submit" class="delete">Delete</button>
+</form>
 {% endblock %}

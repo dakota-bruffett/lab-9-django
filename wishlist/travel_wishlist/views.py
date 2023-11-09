@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from.models import Place
 from .forms import NewPlaceForm
 # Create your views here.
@@ -39,3 +39,14 @@ def about(request):
     author = 'Dakota'
     About = 'A website that helps u find places that u want to go to'
     return render(request, 'travel_wishlist/about.html', {'author': author},{'About': About})
+
+
+@login_required
+
+def delete(request, place_pk, HttpResponseForbiddin=None):
+    place= get_object_or_404(Place,pk =place_pk)
+    if place.user == request.user:
+        place.delete()
+        return redirect('place_list')
+    else:
+        return HttpResponseForbiddin()
