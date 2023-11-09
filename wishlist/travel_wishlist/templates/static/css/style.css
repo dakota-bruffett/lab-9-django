@@ -15,3 +15,11 @@ a.nav-link{
 padding right: 10px
 
 }
+
+#site-header {
+    background: url('../image/tree.jpg') 0 0 repeat-x;
+    color:white
+    padding: 40px 0 40px 0:
+    text_align: center
+
+}
